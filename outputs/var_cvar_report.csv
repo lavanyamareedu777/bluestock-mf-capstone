@@ -1,0 +1,6 @@
+var_cvar = nav.groupby('amfi_code')['return'].apply(
+    lambda x: pd.Series({
+        'VaR_95': x.quantile(0.05),
+        'CVaR_95': x[x <= x.quantile(0.05)].mean()
+    })
+).reset_index()

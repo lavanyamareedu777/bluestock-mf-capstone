@@ -1,0 +1,4 @@
+nav['rolling_mean'] = nav.groupby('amfi_code')['return'].transform(lambda x: x.rolling(5).mean())
+nav['rolling_std'] = nav.groupby('amfi_code')['return'].transform(lambda x: x.rolling(5).std())
+
+nav['rolling_sharpe'] = nav['rolling_mean'] / nav['rolling_std']
